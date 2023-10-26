@@ -1,7 +1,7 @@
 {
-  "name": "packages",
-  "version": "1.0.0",
-  "description": "My Packaging Template.",
+  "name": "@inksha/mysql-tools",
+  "version": "0.0.1",
+  "description": "A library based on Node-MySQL secondary encapsulation.",
   "author": "InkSha",
   "license": "MIT",
   "main": "dist/index.cjs",
@@ -9,7 +9,7 @@
   "types": "index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/InkSha/PackageTemplate.git"
+    "url": "git+https://github.com/InkSha/mysql-tools.git"
   },
   "exports": {
     ".": {
@@ -48,8 +48,9 @@
   "scripts": {
     "build": "rollup -c rollup.config.ts --configPlugin typescript",
     "build:format": "prettier --config .prettierrc.js --write ./src/** ./*js ./*ts",
-    "build:lint": "eslint src/**",
+    "build:lint": "eslint src/** --fix",
     "build:push": "npm run format && npm run build",
+    "build:publish": "npm publish --access public",
     "commit": "cz-customizable/standalone.js",
     "commit:log": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "dev": "nodemon --config nodemon.json src/index.ts",
@@ -70,7 +71,9 @@
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-json": "^6.0.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.5",
     "@types/jest": "^29.5.6",
+    "@types/mysql": "^2.15.23",
     "@types/node": "^20.8.2",
     "@typescript-eslint/eslint-plugin": "latest",
     "@typescript-eslint/parser": "latest",
@@ -88,10 +91,12 @@
     "rollup": "^4.1.4",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-esbuild": "^6.1.0",
-    "rollup-plugin-typescript2": "^0.36.0",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
     "typedoc": "^0.25.2",
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "mysql": "^2.18.1"
   }
 }
